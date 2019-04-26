@@ -11,14 +11,16 @@ pool:
 
 steps:
 - task: Docker@2
+  displayName: "Build and Publish Container"
   inputs:
     containerRegistry: '25570031-2ce7-4597-a91c-138aa2180235'
     repository: 'cloudbootcamp-austin'
     command: 'buildAndPush'
     tags: '$(Build.BuildId)
-  displayName 'Build and Push Container'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureCLI@1
+  displayName: "Reset ACI"
+  inputs:
+    connectedServiceNameARM: 'Visual Studio Enterprise(23d8c84a-ad22-409f-8fe6-d81e2439b47a)'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az container restart -g rg-cloudbootcampaustin -n cloudbootcampaustinweb'
