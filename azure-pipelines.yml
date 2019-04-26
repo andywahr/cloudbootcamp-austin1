@@ -20,7 +20,7 @@ steps:
 
 - task: AzureCLI@1
   inputs:
-   connectedServiceNameARM: 'Visual Studio Enterprise(23d8c84a-ad22-409f-8fe6-d81e2439b47a)'
+    connectedServiceNameARM: 'Visual Studio Enterprise(23d8c84a-ad22-409f-8fe6-d81e2439b47a)'
     scriptLocation: 'inlineScript'
     inlineScript: 'az container restart -g rg-cloudbootcampaustin -n cloudbootcampaustinweb'
   displayName: "Reset ACI"
