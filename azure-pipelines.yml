@@ -10,8 +10,13 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Docker@2
+  inputs:
+    containerRegistry: '25570031-2ce7-4597-a91c-138aa2180235'
+    repository: 'cloudbootcamp-austin'
+    command: 'buildAndPush'
+    tags: '$(Build.BuildId)
+  displayName 'Build and Push Container'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
