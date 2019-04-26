@@ -16,7 +16,7 @@ steps:
     containerRegistry: '25570031-2ce7-4597-a91c-138aa2180235'
     repository: 'cloudbootcamp-austin'
     command: 'buildAndPush'
-    tags: '$(Build.BuildId), latest'
+    arguments: '-t $(Build.BuildId) -t latest' 
 
 - task: AzureCLI@1
   inputs:
